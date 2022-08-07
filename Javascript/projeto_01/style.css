@@ -1,0 +1,33 @@
+#example{
+    width: 200px;
+    height: 200px;
+    margin: 20px;
+    border: 1px solid #CCC;
+}
+.green{
+    background-color: #00FF00;
+    color: #000;
+}
+.red{
+    background-color: #FF0000;
+    color: #000;
+}
+.yelow{
+    background-color: #0000FF;
+    color: #FFF;
+}
+
+.preto{
+    background-color: #000000;
+    color: #FFF;
+}
+.verde{
+    background-color: #00FF00;
+    color: #FFF;
+}
+.image{
+    width: 80px;
+    height: 80px;
+    border-radius: 5px;
+    border: 1px solid #CCC;
+}
