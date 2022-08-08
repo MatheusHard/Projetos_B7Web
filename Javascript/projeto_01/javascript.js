@@ -224,8 +224,65 @@ dataAcres = aux;
 console.log("data com acrescimo de dias: ");
 console.log(dataAcres);
 
+/************DESTRUCT************/
+
+let pessoa = {
+    id: 1,
+    nome: "Matheus",
+    sobreNome: "Hardman",
+    age: 39,
+    profissao:{
+        id: 1,
+        descricao: "Tecnico em Desenvolvimento de Sistemas"
+    }
+}
+                       //iniciazar, se for vazio:
+let { nome, sobreNome, age = 0,                  profissao } = pessoa;
+console.log("Pessoa Destruct")
+console.log(`NOme: ${nome}, Idade: ${age}, Profissao: ${JSON.stringify(profissao)}`);
 
 
+/*******ARROWS functions*******/
+
+const somar = (a, b) => {return a + b}
+
+const somarResumida = (a, b) => a + b;
+
+console.log("Arrow Function")
+console.log(somar(10,50));
+
+console.log("Arrow Function resumida")
+console.log(somarResumida(10,50));
+
+/*******SPREAD*******/
+
+let arraySpread = [1, 6, 5]
+
+let newArraySpread = [...arraySpread, 7, 9, 45]
+console.log("Spread Array: ")
+console.log(newArraySpread);
+
+let objSpread = {
+    id: 1,
+    nome: "RAbuju",
+    age: 80
+}
+let newObjSpread =  {
+    ...objSpread,
+    sobreNome: "Athayde",
+    funcao: "dev"
+}
+console.log("Spread Objeto: ")
+console.log(newObjSpread);
+
+/*****REST*****/
+
+function funcaoRest(...params) {
+    console.log("REST, varias variavies")
+    console.log(params);
+} 
+
+funcaoRest(1,7, 9);
 
 
 
