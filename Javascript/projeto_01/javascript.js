@@ -284,6 +284,52 @@ function funcaoRest(...params) {
 
 funcaoRest(1,7, 9);
 
+/*****INCLUDE*****/
+
+let arrayInclude = ['maca', 'ovo', 'manteiga'];
+//true or false:
+console.log(arrayInclude.includes('ovo'));
+let frase = "corretor";
+console.log(frase.includes('o'));
+
+
+/******REPEAT******/
+
+console.log(frase.repeat(10))
+
+/******KEYS, ENTRIES, VALUES******/
+
+let arrayKey = ['maca', 'ovo', 'manteiga'];
+
+console.log("KEYS")
+console.log(Object.keys(arrayKey))
+console.log("VALUES")
+console.log(Object.values(arrayKey))
+console.log("ENTRIES")
+console.log(Object.entries(arrayKey))
+
+
+/******PADSTART e PADEND******/
+
+let cartao = "2025158756789809"
+let lastDigits = cartao.slice(-4);
+let lastDigits2 = cartao.slice(0, 4);
+
+let cartaoMasc = lastDigits.padStart(16, '*')
+let cartaoMasc2 = lastDigits2.padEnd(16, '*')
+
+
+console.log("Seu cartao é: "+cartaoMasc)
+console.log("Seu cartao é: "+cartaoMasc2)
+
+/*****JSON******/
+
+let p = JSON.parse('{"nome":"MAtheus", "age": 39}')
+
+console.log(p)
+
+
+
 
 
 
