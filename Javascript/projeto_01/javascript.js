@@ -322,11 +322,116 @@ let cartaoMasc2 = lastDigits2.padEnd(16, '*')
 console.log("Seu cartao é: "+cartaoMasc)
 console.log("Seu cartao é: "+cartaoMasc2)
 
-/*****JSON******/
+/*****JSON POST******/
 
 let p = JSON.parse('{"nome":"MAtheus", "age": 39}')
-
+console.log("Json To Object")
 console.log(p)
+
+let objetoJson = {
+    id: 1,
+    nome: "Matheus",
+    age: 80
+}
+console.log("Object To Json")
+console.log(JSON.stringify(objetoJson));
+
+function loadPost(){
+    console.log("LOADING...")
+    fetch('https://jsonplaceholder.typicode.com/posts')
+    .then(function(res){
+        return res.json();
+    }).then(function (json) {
+        montarPosts(json)
+    })
+    .catch(function(error){
+        console.log("Deu B.O.: "+error)
+    })
+}
+/*****JSON POST ASYNC******/
+
+
+async function loadPostAsync(){
+    console.log("LOADING...")
+    let req = await fetch('https://jsonplaceholder.typicode.com/posts')
+    let json = await req.json();
+    montarPosts(json);
+}
+
+
+
+function montarPosts(json){
+let html = '';
+
+for(let i in json){
+    html += '<h3>'+json[i].title+'</h3>';
+    html +=  json[i].body+'<br/>';
+    html += '<hr/>';
+}
+document.getElementById("posts").innerHTML = html;
+}
+
+async function sendPostAsync(){
+    document.getElementById("post").innerHTML = "Sending...";
+    let req = await fetch('https://jsonplaceholder.typicode.com/posts',{
+        method: 'POST',
+        body: JSON.stringify({
+            title: 'Hoem',
+            body: 'Body',
+            userId: 1
+        }),
+        headers: {
+            'Content-type': 'application/json'
+        }
+    });
+    let json = await req.json();
+
+    console.log(json);
+
+}
+
+async function sendImages(){
+    let arquivo = document.getElementById('arquivo').files[0];
+    console.log(arquivo)
+
+    let body = new FormData();
+    body.append('title', 'TESTES TITLE');
+    body.append('arquivo', arquivo);
+
+    let req = await fetch('https://www.site.com.br/upload', {
+        method: 'POST',
+        body: body,
+        headers: {
+            'Content-Type': 'multipart/form-data'
+        }
+    });
+}
+
+function mostrarFoto(){
+
+    let imagem = document.getElementById('arquivo').files[0];
+    let img = document.createElement('img');
+    img.src = URL.createObjectURL(imagem);
+    img.width = 200;
+
+    document.getElementById("area").appendChild(img);
+} 
+
+function mostrarFotoReader(){
+
+    let reader = new FileReader();
+
+    let imagem = document.getElementById('arquivo').files[0];
+    
+    reader.onloadend = function(){ 
+    let img = document.createElement('img');
+    img.src = URL.createObjectURL(imagem);
+    img.width = 200;
+
+    document.getElementById("area").appendChild(img);
+    }
+    reader.readAsDataURL(imagem);
+} 
 
 
 
