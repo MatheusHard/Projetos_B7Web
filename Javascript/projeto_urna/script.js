@@ -59,6 +59,37 @@ function confirmar(){
 
 function atualizaInterface(){
 
+    let etapa = etapas[etapaAtual];
+    let candidado = etapa.candidatos.filter((item)=>{
+
+        if(item.numero === parseInt(numero)){
+            return true;
+        }else{
+            return false;
+        }
+    }); 
+    if(candidado.length > 0){
+        candidado = candidado[0];
+        seuVoto.style.display = 'block';
+        aviso.style.display = 'block';
+        descricao.innerHTML = `Nome: ${candidado.nome}<br/>PArtido: ${candidado.partido}`;
+    
+        let fotosHtml = '';
+        
+        for(let i in candidado.fotos){
+            fotosHtml += 
+                        `<div class="d-1-image">
+                            <img src="images/${candidado.fotos[i].url}"/>
+                            ${candidado.fotos[i].legenda}
+                        </div>`
+        }
+        lateral.innerHTML = fotosHtml;
+    }else{
+        seuVoto.style.display = 'block';
+        aviso.style.display = 'block';
+        descricao.innerHTML = '<div class="aviso--grande pisca">Voto Nulo</div>'
+    }
+    console.log(candidado);
 }
 
 initEtapa();
