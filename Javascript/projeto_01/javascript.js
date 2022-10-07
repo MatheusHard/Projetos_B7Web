@@ -144,6 +144,7 @@ resListaSort = resListaSort.reverse();
 console.log("Desordenado: ")
 console.log(resListaSort)
 
+
 //Usando Map:
 let arrayMap = [1, 5, 10, 50];
 
@@ -432,8 +433,44 @@ function mostrarFotoReader(){
     }
     reader.readAsDataURL(imagem);
 } 
+//Ornedar Objetos
 
+var pessoas = [
+    {
+      nome: "Matheus",
+    idade: 29
+  },
+  {
+      nome: "Pedro",
+    idade: 18
+  },
+  {
+      nome: "Maria",
+    idade: 40
+  },
+  {
+      nome: "Alan",
+    idade: 63
+  }
+];
+pessoas.sort((a, b) => {
+  return a.idade - b.idade;
+});
+//Idade:
+console.log("ORDER BY IDADE");
+console.log(pessoas);
 
+pessoas.sort((a, b) => {
+    if(a.nome < b.nome) {
+        return -1;
+      } else {
+        return true;
+      }
+      });
+
+  console.log("ORDER BY Nome");
+  console.log(pessoas);
+  
 
 
 
